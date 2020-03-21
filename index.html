@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="listaAbogados">
+<head>
+    <meta http-equiv="Content-type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracion dato de Abogados - PR</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="datos">
+
+    <div class="container-fluid">
+
+        <div class="status">
+            <!-- <span> <strong>Estado:</strong> aqui texto {{estado}}</span> -->
+            <!-- class="alert alert-primary" -->
+            <div ng-class="alertClass" role="alert"> 
+                <strong>Estado:</strong> {{estado}}
+            </div>
+        </div>
+
+
+        <div class="ciudades">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="listCiudades">Lista de Ciudades</label>
+                </div>
+                <select class="custom-select" id="listCiudades" ng-model="itemCiudad" ng-change="cambiarCiudad()" ng-disabled="checkedCiudad">
+                    <option ng-repeat="ciudad in ciudades" value="{{ciudad.valor}}">{{ciudad.texto | limpiar}}</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="paginas">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="listPaginas">Paginas</label>
+                </div>
+                <select class="custom-select" id="listPaginas" ng-model="itemPagina" ng-change="cambiarPagina()" ng-disabled="checkedPagina">
+                    <option ng-repeat="pagina in paginas" value="{{pagina.valor}}">{{pagina.texto}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="table table-sm table-hover listaAbogados">
+            <table>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Telefono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="abogado in listAbogados">
+                        <td>{{abogado.nombre}}</td>
+                        <td>{{abogado.correo}}</td>
+                        <td>{{abogado.telefono}}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td>nombre</td>
+                        <td>correo</td>
+                        <td>telefono</td>
+                    </tr>
+                    <tr>
+                        <td>nombre</td>
+                        <td>correo</td>
+                        <td>telefono</td>
+                    </tr>
+                    <tr>
+                        <td>nombre</td>
+                        <td>correo</td>
+                        <td>telefono</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+</body>
+</html>
